@@ -41,5 +41,4 @@ spacy==3.0.0.dev8
 sqlparse==0.3.1
 srsly==2.0.1
 word2number==1.1
-xkit==0.0.0
 
