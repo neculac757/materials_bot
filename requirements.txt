@@ -99,7 +99,6 @@ PyPDF2==1.26.0
 pyRFC3339==1.0
 pyrsistent==0.16.0
 pytesseract==0.3.4
-python-apt==1.6.5+ubuntu0.2
 python-dateutil==2.8.1
 python-debian==0.1.32
 pytz==2020.1
