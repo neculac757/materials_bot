@@ -15,7 +15,6 @@ colorlover==0.3.0
 contextvars==2.4
 cryptography==2.1.4
 cufflinks==0.17.3
-cupshelpers==1.0
 cycler==0.10.0
 cymem==2.0.3
 Cython==0.29.17
