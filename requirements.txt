@@ -1,4 +1,4 @@
-cryptography==2.1.4
+cryptography==2.3
 cufflinks==0.17.3
 decorator==4.4.2
 dill==0.3.1.1
