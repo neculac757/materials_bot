@@ -44,8 +44,9 @@ def makeWebhookResult(req):
         }
 
 if __name__=='__main__':
-    app.debug=False
-    app.run(port = process.env.PORT | 80)
+    port=int(os.getenv('PORT',80))
+    app.run(debug=False,port=port)
+    
     
     
 #     port= int(os.getenv('PORT',5000))
