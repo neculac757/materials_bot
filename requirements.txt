@@ -42,4 +42,5 @@ sqlparse==0.3.1
 srsly==2.0.1
 word2number==1.1
 Flask==1.1.2
+xlrd==1.2.0
 
