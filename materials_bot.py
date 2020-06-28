@@ -38,10 +38,16 @@ def makeWebhookResult(req):
     new_material="ni milega new material"
     speech="New material is"+new_material
     return {
-            "speech":speech,
-            "displayText":speech,
-            "source":'mat_bot'  
-        }
+              "fulfillmentMessages": [
+                {
+                  "text": {
+                    "text": [
+                      speech
+                    ]
+                  }
+                }
+              ]
+            }
 
 if __name__=='__main__':
     port=int(os.getenv('PORT',80))
