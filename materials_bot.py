@@ -17,9 +17,9 @@ from flask import make_response
 
 app = Flask(__name__)
 
-# @app.route('/')
-# def hello_world():
-#     return 'Hello, World!'
+@app.route('/',methods=['GET'])
+def hello_world():
+    return 'Hello, World!'
 
 @app.route('/webhook',methods=['POST'])
 def webhook():
@@ -45,7 +45,9 @@ def makeWebhookResult(req):
 
 if __name__=='__main__':
     app.debug=False
-    app.run()
+    app.run(port = process.env.PORT | 80)
+    
+    
 #     port= int(os.getenv('PORT',5000))
 #     print("starting server on port",port)
 #     app.run(debug=True,port=port,host='0.0.0.0')
