@@ -40,7 +40,7 @@ def makeWebhookResult(req):
     return {
             "speech":speech,
             "displayText":speech,
-            "source":'material_feature'  
+            "source":'mat_bot'  
         }
 
 if __name__=='__main__':
