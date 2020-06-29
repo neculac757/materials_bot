@@ -35,8 +35,10 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    new_material="ni milega new material"
-    speech="New material is"+new_material
+    m_type=req.queryResult.outputContexts[0].parameters.mat_type.original
+    m_feature=req.queryResult.outputContexts[0].parameters.mat_feature.original
+    m_feature1=req.queryResult.outputContexts[0].parameters.mat_feature1.original
+    speech=str(m_type)+str(m_feature)+str(m_feature1)
     return {
               "fulfillmentMessages": [
                 {
