@@ -24,17 +24,19 @@ def hello_world():
 @app.route('/webhook',methods=['POST'])
 def webhook():
     req=request.get_json(silent=True,force=True)
-    print("Request:")
-    print(json.dumps(req,indent=4))
+#     print("Request:")
+#     print(json.dumps(req,indent=4))
     res=makeWebhookResult(req)
     res=json.dumps(res,indent=4)
     
     r=make_response(res)
     r.headers['Content-Type']='application/json'
-    print("yeeee haiiii responseeee: ",r)
+#     print("yeeee haiiii responseeee: ",r)
     return r
 
 def makeWebhookResult(req):
+    print("request:     ",req)
+    print("query result:   ",req.queryResult)
     m_type=req.queryResult.outputContexts[0].parameters.mat_type.original
     m_feature=req.queryResult.outputContexts[0].parameters.mat_feature.original
     m_feature1=req.queryResult.outputContexts[0].parameters.mat_feature1.original
