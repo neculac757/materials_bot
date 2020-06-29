@@ -36,11 +36,11 @@ def webhook():
 
 def makeWebhookResult(req):
     print("request:     ",req)
-    reqst=json.dumps(req,indent=4)
-    print("query result:   ",reqst.queryResult)
-    m_type=reqst.queryResult.outputContexts[0].parameters.mat_type.original
-    m_feature=reqst.queryResult.outputContexts[0].parameters.mat_feature.original
-    m_feature1=reqst.queryResult.outputContexts[0].parameters.mat_feature1.original
+#     reqst=json.dumps(req,indent=4)
+    print("query result:   ",req.get("queryResult")
+    m_type=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_type.original")
+    m_feature=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_type.original")
+    m_feature1=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_type.original")
     speech=str(m_type)+str(m_feature)+str(m_feature1)+"  yeh he response"
     return {
               "fulfillmentMessages": [
