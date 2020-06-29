@@ -38,7 +38,7 @@ def makeWebhookResult(req):
     m_type=req.queryResult.outputContexts[0].parameters.mat_type.original
     m_feature=req.queryResult.outputContexts[0].parameters.mat_feature.original
     m_feature1=req.queryResult.outputContexts[0].parameters.mat_feature1.original
-    speech=str(m_type)+str(m_feature)+str(m_feature1)
+    speech=str(m_type)+str(m_feature)+str(m_feature1)+"  yeh he response"
     return {
               "fulfillmentMessages": [
                 {
