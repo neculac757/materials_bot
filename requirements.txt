@@ -43,4 +43,6 @@ srsly==2.0.1
 word2number==1.1
 Flask==1.1.2
 xlrd==1.2.0
+gensim==3.8.3
+jieba==0.42.1
 
