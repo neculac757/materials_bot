@@ -37,29 +37,23 @@ def webhook():
 #     print("yeeee haiiii responseeee: ",r)
     return r
 
-def makeWebhookResult(req):
-    m_type=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_type")
-    m_feature=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_feature")
-    m_feature1=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_feature1")
-    
-    speech=find_new_materials(m_type,"","",m_feature+" "+m_feature1,"")
-#     speech=str(m_type)+str(m_feature)+str(m_feature1)+"  yeh he response"
-    return {
-              "fulfillmentMessages": [
-                {
-                  "text": {
-                    "text": [
-                      speech
-                    ]
-                  }
-                }
-              ]
-            }
 
-if __name__=='__main__':
-    port=int(os.getenv('PORT',80))
-    app.run(debug=False,port=port,host='0.0.0.0')
-    
+def find_sent_sim(sentence,sentList):
+    maxVal=0
+    texts = sentList
+    keyword = sentence
+    texts = [jieba.lcut(text) for text in texts]
+    dictionary = corpora.Dictionary(texts)
+    feature_cnt = len(dictionary.token2id)
+    corpus = [dictionary.doc2bow(text) for text in texts]
+    tfidf = models.TfidfModel(corpus) 
+    kw_vector = dictionary.doc2bow(jieba.lcut(keyword))
+    index = similarities.SparseMatrixSimilarity(tfidf[corpus], num_features = feature_cnt)
+    sim = index[tfidf[kw_vector]]
+    return sim
+
+
+
 def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):   
     material_type=m_type
     material_tensile_str=m_tens
@@ -143,18 +137,26 @@ def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):
         material_score = material_score.sort_values(by='score', ascending=False)
     return material_score.loc[0].to_string()
 
-def find_sent_sim(sentence,sentList):
-    maxVal=0
-    texts = sentList
-    keyword = sentence
-    texts = [jieba.lcut(text) for text in texts]
-    dictionary = corpora.Dictionary(texts)
-    feature_cnt = len(dictionary.token2id)
-    corpus = [dictionary.doc2bow(text) for text in texts]
-    tfidf = models.TfidfModel(corpus) 
-    kw_vector = dictionary.doc2bow(jieba.lcut(keyword))
-    index = similarities.SparseMatrixSimilarity(tfidf[corpus], num_features = feature_cnt)
-    sim = index[tfidf[kw_vector]]
-    return sim
+def makeWebhookResult(req):
+    m_type=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_type")
+    m_feature=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_feature")
+    m_feature1=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_feature1")
+    
+    speech=find_new_materials(m_type,"","",m_feature+" "+m_feature1,"")
+#     speech=str(m_type)+str(m_feature)+str(m_feature1)+"  yeh he response"
+    return {
+              "fulfillmentMessages": [
+                {
+                  "text": {
+                    "text": [
+                      speech
+                    ]
+                  }
+                }
+              ]
+            }
 
-
+if __name__=='__main__':
+    port=int(os.getenv('PORT',80))
+    app.run(debug=False,port=port,host='0.0.0.0')
+    
