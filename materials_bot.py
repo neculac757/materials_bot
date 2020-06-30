@@ -37,7 +37,7 @@ def webhook():
 def makeWebhookResult(req):
     print("request:     ",req)
 #     reqst=json.dumps(req,indent=4)
-    print("query result:   ",req.get("queryResult")
+    print("query result::   ",req.get("queryResult")
     m_type=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_type.original")
     m_feature=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_type.original")
     m_feature1=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_type.original")
