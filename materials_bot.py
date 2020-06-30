@@ -52,7 +52,20 @@ def find_sent_sim(sentence,sentList):
     sim = index[tfidf[kw_vector]]
     return sim
 
+file_path='new_material.xlsx'
 
+
+def csv_from_excel(file):
+    wb = xlrd.open_workbook(file)
+    sh = wb.sheet_by_name('Foglio1')
+    csv_new_material = open('new_material.csv', 'w')
+    wr = csv.writer(csv_new_material, quoting=csv.QUOTE_ALL)
+
+    for rownum in range(sh.nrows):
+        wr.writerow(sh.row_values(rownum))
+
+    csv_new_material.close()
+    
 
 def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):   
     material_type=m_type
@@ -62,6 +75,11 @@ def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):
     material_application=m_app
 
     material_score=pd.DataFrame(columns=['material','score','type','tensile','elongation','feature','application'])
+    
+    csv_from_excel(file_path)
+    new_material = pd.read_csv('new_material.csv')
+    new_material=new_material[['New material name (output)','Type (input)','Ultimate tensile strength(Mpa)','Elongation(%)','Key features (input)','Application']]
+
 
     def find_type_similarity(current_type,material_type):
         if (str(current_type)!='nan') & (str(material_type)!='nan'):
