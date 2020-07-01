@@ -163,18 +163,35 @@ def makeWebhookResult(req):
     m_elongation=req.get("queryResult").get("outputContexts")[0].get("parameters").get("number-integer")
     m_tens_strength=req.get("queryResult").get("outputContexts")[0].get("parameters").get("number")
     speech=find_new_materials(m_type,m_tens_strength,m_elongation,m_feature,"")
-#     speech=str(m_type)+str(m_feature)+str(m_feature1)+"  yeh he response"
     return {
-              "fulfillmentMessages": [
-                {
-                  "text": {
-                    "text": [
-                      speech
-                    ]
-                  }
-                }
-              ]
-            }
+      "fulfillmentMessages": [
+        {
+          "card": {
+            "title": "Recommendation",
+            "subtitle": speech,
+            "imageUri": "https://example.com/images/example.png",
+            "buttons": [
+              {
+                "text": "No service",
+                "postback": "https://example.com/path/for/end-user/to/follow"
+              }
+            ]
+          }
+        }
+      ]
+    }
+#     speech=str(m_type)+str(m_feature)+str(m_feature1)+"  yeh he response"
+#     return {
+#               "fulfillmentMessages": [
+#                 {
+#                   "text": {
+#                     "text": [
+#                       speech
+#                     ]
+#                   }
+#                 }
+#               ]
+#             }
 
 if __name__=='__main__':
     port=int(os.getenv('PORT',80))
