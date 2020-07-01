@@ -71,7 +71,9 @@ def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):
     material_type=m_type
     material_tensile_str=m_tens
     material_elongation=m_elong
-    material_key_feature=m_feature
+    material_key_feature=""
+    for feature in m_feature:
+        material_key_feature+=feature+" "
     material_application=m_app
 
     material_score=pd.DataFrame(columns=['material','score','type','tensile','elongation','feature','application'])
