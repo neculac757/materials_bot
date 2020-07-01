@@ -92,6 +92,7 @@ def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):
 
     def find_tensile_similarity(current_tensile,material_tensile_str):
         if (str(current_tensile)!='nan') & (str(material_tensile_str)!='nan'):
+            print(int(current_tensile),int(material_tensile_str))
             difference = abs(int(current_tensile)-int(material_tensile_str))
             score = 1/difference
         else:
