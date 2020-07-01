@@ -154,8 +154,8 @@ def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):
                                                  str(row['Type (input)']),
                                                  str(row['Ultimate tensile strength(Mpa)']),
                                                  str(row['Elongation(%)']),
-                                                 str(feature_similarity),
-                                                 str(application_similarity)]
+                                                 str(row['Key features (input)']),
+                                                 str(row['Application'])]
         material_score = material_score.sort_values(by='score', ascending=False)
         new_mat_name = material_score.iloc[0]["material"]
         new_mat_type = material_score.iloc[0]["type"]
@@ -163,7 +163,7 @@ def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):
         new_mat_tensile = material_score.iloc[0]["tensile"]
         new_mat_feature = material_score.iloc[0]["feature"]
         new_mat_appl = material_score.iloc[0]["application"]
-        narrative = f"Best matched material I found is {new_mat_name}, Its type is {new_mat_type}. Further details are given below:\n Elongation: {new_mat_elong}\n Tensile strength: {new_mat_tensile}\n Features: {new_mat_feature}\n Applications: {new_mat_appl}"
+        narrative = f"Best matched material I found is {new_mat_name}, Its type is {new_mat_type}. Further details are given below:<br> Elongation: {new_mat_elong}<br> Tensile strength: {new_mat_tensile}<br> Features: {new_mat_feature}<br> Applications: {new_mat_appl}"
     return narrative
 
 def makeWebhookResult(req):
