@@ -158,9 +158,9 @@ def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):
 def makeWebhookResult(req):
     m_type=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_type")
     m_feature=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_feature")
-    m_feature1=req.get("queryResult").get("outputContexts")[0].get("parameters").get("mat_feature1")
-    
-    speech=find_new_materials(m_type,"","",m_feature+" "+m_feature1,"")
+    m_elongation=req.get("queryResult").get("outputContexts")[0].get("parameters").get("number-integer")
+    m_tens_strength=req.get("queryResult").get("outputContexts")[0].get("parameters").get("number")
+    speech=find_new_materials(m_type,m_tens_strength,m_elongation,m_feature,"")
 #     speech=str(m_type)+str(m_feature)+str(m_feature1)+"  yeh he response"
     return {
               "fulfillmentMessages": [
