@@ -149,7 +149,7 @@ def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):
         else:
             application_similarity = 0.0
 
-        total_score = 1.5*type_similarity+tensile_similarity+elongation_similarity+feature_similarity+application_similarity
+        total_score = 1.1*type_similarity+tensile_similarity+elongation_similarity+feature_similarity+application_similarity
         material_score.loc[len(material_score)]=[material_name,total_score,
                                                  str(row['Type (input)']),
                                                  str(row['Ultimate tensile strength(Mpa)']),
