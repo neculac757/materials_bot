@@ -164,6 +164,7 @@ def find_new_materials(m_type,m_tens,m_elong,m_feature,m_app):
         new_mat_feature = material_score.iloc[0]["feature"]
         new_mat_appl = material_score.iloc[0]["application"]
         narrative = f"Best matched material I found is {new_mat_name}, Its type is {new_mat_type}. Further details are:  Elongation: {new_mat_elong}, Tensile strength: {new_mat_tensile}, Features: {new_mat_feature}, Applications: {new_mat_appl}"
+#         print(narrative)
     return narrative
 
 def makeWebhookResult(req):
