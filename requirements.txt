@@ -28,7 +28,7 @@ prompt-toolkit==3.0.5
 psutil==5.7.0
 pymacaroons==0.13.0
 PyMySQL==0.9.3
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pytesseract==0.3.4
 QtPy==1.9.0
 regex==2020.4.4
