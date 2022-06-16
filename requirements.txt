@@ -14,7 +14,7 @@ kiwisolver==1.2.0
 launchpadlib==1.10.6
 matplotlib==3.2.1
 nltk==3.5
-notebook==6.0.3
+notebook==6.4.12
 numpy==1.18.5
 oauth==1.0.1
 opencv-python==4.2.0.34
